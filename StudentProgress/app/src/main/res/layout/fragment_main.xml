@@ -1,0 +1,26 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ikpmd.com.studentprogress.Fragments.MainFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcome_textview"
+        tools:text="@string/welcome_text_title"
+        android:text="@string/welcome_text_title"
+        android:contentDescription="@string/welcome_text_title" />
+
+    <TextView
+        android:text="@string/welcome_text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/welcome_description"
+        tools:text="@string/welcome_text_description"
+        android:contentDescription="@string/welcome_text_description" />
+    </LinearLayout>
+</FrameLayout>
