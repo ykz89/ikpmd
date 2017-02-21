@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import ikpmd.com.studentprogress.Fragments.MainFragment;
+import ikpmd.com.studentprogress.Fragments.ViewResultsFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_results) {
-            fragmentClass = MainFragment.class;
+            fragmentClass = ViewResultsFragment.class;
         } else if (id == R.id.nav_edit) {
             fragmentClass = MainFragment.class;
         } else {
