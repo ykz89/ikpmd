@@ -1,56 +1,40 @@
 package ikpmd.com.studentprogress.Fragments;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.Volley;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.List;
-
-import ikpmd.com.studentprogress.Helpers.DatabaseHelper;
-import ikpmd.com.studentprogress.Helpers.DatabaseInfo;
-import ikpmd.com.studentprogress.Helpers.GsonRequest;
-import ikpmd.com.studentprogress.Helpers.VolleyHelper;
-import ikpmd.com.studentprogress.Models.CourseModel;
 import ikpmd.com.studentprogress.R;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A fragment with a Google +1 button.
  * Activities that contain this fragment must implement the
  * {@link ViewResultsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link ViewResultsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ViewResultsFragment extends Fragment {
+public class ViewResultsFragment extends Fragment implements View.OnClickListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-//    private static final String ENDPOINT = "http://localhost/ikpmd/api/showCourses";
-    private static final String ENDPOINT = "http://10.0.2.2/ikpmd/api/showCourses";
-
-
+    // The request code must be 0 or greater.
+    private static final int PLUS_ONE_REQUEST_CODE = 0;
+    // The URL to +1.  Must be a valid URL.
+    private final String PLUS_ONE_URL = "http://developer.android.com";
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private Button viewCoursesButton, viewResultsButton;
 
     private OnFragmentInteractionListener mListener;
-    private DatabaseHelper dbHelper;
 
     public ViewResultsFragment() {
         // Required empty public constructor
@@ -77,15 +61,54 @@ public class ViewResultsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dbHelper = DatabaseHelper.getHelper(this.getContext());
-        fetchCourses();
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_results, container, false);
+        View view = inflater.inflate(R.layout.fragment_view_results, container, false);
+
+        viewCoursesButton = (Button) view.findViewById(R.id.viewCoursesButton);
+        viewResultsButton = (Button) view.findViewById(R.id.viewResultsButton);
+
+        viewCoursesButton.setOnClickListener(this);
+        viewResultsButton.setOnClickListener(this);
+
+        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onClick(View view){
+        Fragment fragment = null;
+        switch (view.getId()) {
+            case R.id.viewCoursesButton:
+                fragment = new ListResultsFragment();
+                replaceFragment(fragment);
+                break;
+
+            case R.id.viewResultsButton:
+                fragment = new ListResultsFragment();
+                replaceFragment(fragment);
+                break;
+        }
+    }
+
+    public void replaceFragment(Fragment someFragment) {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_main, someFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -120,48 +143,5 @@ public class ViewResultsFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
-
-    private void fetchCourses() {
-        Type type = new TypeToken<List<CourseModel>>(){}.getType();
-
-        GsonRequest<List<CourseModel>> request = new GsonRequest<List<CourseModel>>(ENDPOINT,
-                type, null, new Response.Listener<List<CourseModel>>() {
-            @Override
-            public void onResponse(List<CourseModel> response) {
-                processRequestSuccess(response);
-            }
-        }, new Response.ErrorListener(){
-            @Override
-            public void onErrorResponse(VolleyError error){
-                processRequestError(error);
-            }
-        });
-
-        VolleyHelper.getInstance(this.getContext()).addToRequestQueue(request);
-    }
-
-    private void processRequestSuccess(List<CourseModel> subjects ){
-
-        // putting all received classes in my database.
-        for (CourseModel cm : subjects) {
-            ContentValues cv = new ContentValues();
-            cv.put(DatabaseInfo.CourseColumn.NAME, cm.name);
-            cv.put(DatabaseInfo.CourseColumn.GRADE, cm.grade);
-            cv.put(DatabaseInfo.CourseColumn.ECTS, cm.ects);
-            cv.put(DatabaseInfo.CourseColumn.MANDATORY , cm.mandatory);
-            cv.put(DatabaseInfo.CourseColumn.TERM , cm.term);
-            dbHelper.insert(DatabaseInfo.CourseTables.COURSE, null, cv);
-        }
-
-        Cursor rs = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null, null);
-        rs.moveToFirst();
-        DatabaseUtils.dumpCursor(rs);
-
-    }
-
-    private void processRequestError(VolleyError error){
-        Log.e("ViewResultFragment", error.toString());
-    }
-
 
 }
