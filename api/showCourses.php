@@ -17,6 +17,6 @@ function showUsers() {
         }
     }
     header('Content-type: application/json');
-    echo json_encode(array("users"=>$temp_array));
+    echo json_encode($temp_array);
     mysqli_close($connect);
 }   ?>
