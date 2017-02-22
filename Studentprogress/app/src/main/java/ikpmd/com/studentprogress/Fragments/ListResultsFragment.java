@@ -6,7 +6,10 @@ import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,8 +20,10 @@ import com.android.volley.VolleyError;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
+import ikpmd.com.studentprogress.Adapters.RecyclerViewAdapter;
 import ikpmd.com.studentprogress.Helpers.DatabaseHelper;
 import ikpmd.com.studentprogress.Helpers.DatabaseInfo;
 import ikpmd.com.studentprogress.Helpers.GsonRequest;
@@ -26,49 +31,27 @@ import ikpmd.com.studentprogress.Helpers.VolleyHelper;
 import ikpmd.com.studentprogress.Models.CourseModel;
 import ikpmd.com.studentprogress.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ListResultsFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ListResultsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ListResultsFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-//    private static final String ENDPOINT = "http://localhost/ikpmd/api/showCourses";
+//  private static final String ENDPOINT = "http://localhost/ikpmd/api/showCourses";
     private static final String ENDPOINT = "http://10.0.2.2/ikpmd/api/showCourses";
-
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
+    private View view;
     private OnFragmentInteractionListener mListener;
     private DatabaseHelper dbHelper;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.Adapter mAdapter;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private ArrayList<CourseModel> dataset = new ArrayList<CourseModel>();
 
     public ListResultsFragment() {
-        // Required empty public constructor
     }
 
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment ListResultsFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static ListResultsFragment newInstance(String param1, String param2) {
         ListResultsFragment fragment = new ListResultsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
@@ -82,8 +65,27 @@ public class ListResultsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_results, container, false);
+
+        view = inflater.inflate(R.layout.fragment_list_results, container, false);
+        Snackbar.make(view, "Resultaten ophalen..", Snackbar.LENGTH_SHORT)
+                .show();
+
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_results);
+        // use this setting to improve performance if you know that changes
+        // in content do not change the layout size of the RecyclerView
+        mRecyclerView.setHasFixedSize(true);
+
+        // use a linear layout manager
+        mLayoutManager = new LinearLayoutManager(getContext());
+
+        // specify an adapter
+        mAdapter = new RecyclerViewAdapter(dataset);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.getAdapter().notifyDataSetChanged();
+
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -143,6 +145,7 @@ public class ListResultsFragment extends Fragment {
         // putting all received classes in my database.
         for (CourseModel cm : subjects) {
             ContentValues cv = new ContentValues();
+            //cv.put(DatabaseInfo.CourseColumn.ID, cm.id);
             cv.put(DatabaseInfo.CourseColumn.NAME, cm.name);
             cv.put(DatabaseInfo.CourseColumn.GRADE, cm.grade);
             cv.put(DatabaseInfo.CourseColumn.ECTS, cm.ects);
@@ -153,13 +156,39 @@ public class ListResultsFragment extends Fragment {
 
         Cursor rs = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null, null);
         rs.moveToFirst();
-        DatabaseUtils.dumpCursor(rs);
 
+        //DatabaseUtils.dumpCursor(rs);
+        Log.d("ListResultsFragment", rs.getCount() + "");
+
+        try {
+            while (rs.moveToNext()) {
+                //int idIndex = rs.getColumnIndex("id");
+                int nameIndex = rs.getColumnIndex("name");
+                int gradeIndex = rs.getColumnIndex("grade");
+                int ectsIndex = rs.getColumnIndex("ects");
+                int mandatoryIndex = rs.getColumnIndex("mandatory");
+                int termIndex = rs.getColumnIndex("term");
+
+                //int id = rs.getInt(idIndex);
+                String name = rs.getString(nameIndex);
+                String grade = rs.getString(gradeIndex);
+                int ects = rs.getInt(ectsIndex);
+                boolean mandatory = rs.getInt(mandatoryIndex) > 0;
+                int term = rs.getInt(termIndex);
+
+                dataset.add(new CourseModel(name, ects, term, mandatory, grade));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            rs.close();
+        }
+        mAdapter = new RecyclerViewAdapter(dataset);
+        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.getAdapter().notifyDataSetChanged();
     }
 
     private void processRequestError(VolleyError error){
-        Log.e("ViewResultFragment", error.toString());
+        Log.e("ListResultsFragment", error.toString());
     }
-
-
 }
