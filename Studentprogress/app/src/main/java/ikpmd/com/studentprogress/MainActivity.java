@@ -12,8 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import ikpmd.com.studentprogress.Fragments.MainCoursesFragment;
 import ikpmd.com.studentprogress.Fragments.MainFragment;
-import ikpmd.com.studentprogress.Fragments.ViewResultsFragment;
+import ikpmd.com.studentprogress.Fragments.MainResultFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -66,9 +67,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_results) {
-            fragmentClass = ViewResultsFragment.class;
+            fragmentClass = MainCoursesFragment.class;
         } else if (id == R.id.nav_edit) {
-            fragmentClass = MainFragment.class;
+            fragmentClass = MainResultFragment.class;
         } else {
             fragmentClass = MainFragment.class;
         }

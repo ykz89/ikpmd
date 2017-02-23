@@ -29,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL("CREATE TABLE " + DatabaseInfo.CourseTables.COURSE + " (" +
-                BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                DatabaseInfo.CourseColumn.ID + " INTEGER PRIMARY KEY, " +
                 DatabaseInfo.CourseColumn.NAME + " TEXT," +
                 DatabaseInfo.CourseColumn.ECTS + " TEXT," +
                 DatabaseInfo.CourseColumn.TERM + " TEXT," +
@@ -49,7 +49,11 @@ public class DatabaseHelper extends SQLiteOpenHelper{
     }
 
     public void insert(String table, String nullColumnHack, ContentValues values){
-        mSQLDB.insert(table, nullColumnHack, values);
+        mSQLDB.insertWithOnConflict(table, nullColumnHack, values, SQLiteDatabase.CONFLICT_REPLACE);
+    }
+
+    public void update(String table, ContentValues values, String whereClause, String[] whereArgs){
+        mSQLDB.update(table, values, whereClause,whereArgs);
     }
 
     public Cursor query(String table, String[] columns, String selection, String[] selectArgs, String groupBy, String having, String orderBy){

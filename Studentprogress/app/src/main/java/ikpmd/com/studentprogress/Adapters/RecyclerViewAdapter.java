@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import ikpmd.com.studentprogress.Models.CourseModel;
@@ -21,11 +20,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     // you provide access to all the views for a data item in a view holder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
-        public TextView nameTextView;
+        public TextView nameTextView, ectsTextView, termTextView, mandatoryTextView;
 
         public ViewHolder(View v) {
             super(v);
             nameTextView = (TextView) itemView.findViewById(R.id.course_name);
+            ectsTextView = (TextView) itemView.findViewById(R.id.course_ects);
+            termTextView = (TextView) itemView.findViewById(R.id.course_term);
+            mandatoryTextView = (TextView) itemView.findViewById(R.id.course_mandatory);
         }
     }
 
@@ -53,7 +55,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.nameTextView.setText(mDataset.get(position).name);
-
+        holder.ectsTextView.setText(mDataset.get(position).ects + "");
+        holder.termTextView.setText(mDataset.get(position).term + "");
+        String mandatoryText = (mDataset.get(position).mandatory)?"Verplicht":"Keuzevak";
+        holder.mandatoryTextView.setText(mandatoryText);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
