@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 function showUsers() {
     global $connect;
-    $query = "SELECT * FROM Course";
+    $query = "SELECT id, name, ects, term, IF(mandatory, 'true', 'false') as mandatory, grade FROM Course;";
     $result = mysqli_query($connect,$query);
     $number_of_rows = mysqli_num_rows($result);
     $temp_array = array();
