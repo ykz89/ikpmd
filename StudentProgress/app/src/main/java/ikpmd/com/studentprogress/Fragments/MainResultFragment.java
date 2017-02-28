@@ -120,8 +120,43 @@ public class MainResultFragment extends Fragment implements Updateable{
             cv.put(DatabaseInfo.CourseColumn.TERM , cm.term);
             dbHelper.insert(DatabaseInfo.CourseTables.COURSE, null, cv);
         }
+        populateAdapter();
+    }
 
-        //Cursor rs = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, "grade", new String[]{"not null"}, null, null, null);
+    private void processRequestError(VolleyError error){
+        Snackbar.make(view, "Geen verbinding!", Snackbar.LENGTH_LONG)
+                .setAction("RETRY", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        fetchResults();
+                    }
+                })
+                .show();
+        Log.e("MainResultsFragment", error.toString());
+        populateAdapter();
+    }
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+    }
+
+    @Override
+    public void update() {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_main, new MainResultFragment());
+        getFragmentManager().popBackStack();
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void populateAdapter(){
         Cursor rs = dbHelper.rawQuery("SELECT id, name, ects, term, mandatory, grade FROM Course WHERE grade IS NOT NULL;", null);
 
         try {
@@ -149,38 +184,5 @@ public class MainResultFragment extends Fragment implements Updateable{
         }
         mAdapter = new ResultsViewAdapter(dataset, this);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.getAdapter().notifyDataSetChanged();
-    }
-
-    private void processRequestError(VolleyError error){
-        Snackbar.make(view, "Geen resultaten!", Snackbar.LENGTH_LONG)
-                .setAction("RETRY", new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        fetchResults();
-                    }
-                })
-                .show();
-        Log.e("MainResultsFragment", error.toString());
-    }
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-    @Override
-    public void update() {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.content_main, new MainResultFragment());
-        getFragmentManager().popBackStack();
-        transaction.addToBackStack(null);
-        transaction.commit();
-    }
+        mRecyclerView.getAdapter().notifyDataSetChanged();    }
 }

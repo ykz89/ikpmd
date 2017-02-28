@@ -131,8 +131,16 @@ public class ListCoursesFragment extends Fragment {
             dbHelper.insert(DatabaseInfo.CourseTables.COURSE, null, cv);
         }
 
-        Cursor rs = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null, null);
+        populateAdapter();
+    }
 
+    private void processRequestError(VolleyError error){
+        Log.e("ListCoursesFragment", error.toString());
+        populateAdapter();
+    }
+
+    public void populateAdapter(){
+        Cursor rs = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null, null);
         try {
             while (rs.moveToNext()) {
                 int idIndex = rs.getColumnIndex("id");
@@ -159,9 +167,5 @@ public class ListCoursesFragment extends Fragment {
         mAdapter = new CourseViewAdapter(dataset);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.getAdapter().notifyDataSetChanged();
-    }
-
-    private void processRequestError(VolleyError error){
-        Log.e("ListCoursesFragment", error.toString());
     }
 }
