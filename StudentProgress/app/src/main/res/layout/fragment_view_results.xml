@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:text="@string/viewResultsButtonText"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewCoursesButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:id="@+id/viewResultsButton"
+        style="@style/Base.Widget.AppCompat.Button.Colored" />
+
+    <Button
+        android:text="@string/viewResultButtonText"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/viewCoursesButton"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:theme="@android:style/Widget.Holo.Button"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        style="@style/Base.Widget.AppCompat.Button.Colored" />
+</RelativeLayout>

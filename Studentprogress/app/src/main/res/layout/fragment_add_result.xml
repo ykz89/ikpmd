@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ikpmd.com.studentprogress.Fragments.AddResultFragment">
+
+        <TextView
+            android:text="@string/course_spinner_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/course_spinner_label"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:labelFor="@+id/course_spinner"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/course_spinner"
+            android:layout_marginTop="24dp"
+            android:layout_below="@+id/course_spinner_label"
+            android:layout_alignParentStart="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:maxLines="1"
+            android:id="@+id/input_result"
+            android:hint="@string/input_result_label"
+            android:layout_marginTop="36dp"
+            android:layout_below="@+id/course_spinner"
+            android:layout_alignParentStart="true"
+            android:inputType="textPostalAddress" />
+
+        <Button
+            android:text="@string/saveText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_result_button"
+            android:gravity="center"
+            android:theme="@android:style/Widget.Holo.Button"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:layout_marginTop="55dp"
+            android:layout_below="@+id/input_result"
+            android:layout_toEndOf="@+id/cancel_action"
+            android:textSize="18sp" />
+
+        <Button
+            android:text="@string/cancelText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/cancel_action"
+            style="@style/Base.Widget.AppCompat.Button.Colored"
+            android:layout_alignTop="@+id/add_result_button"
+            android:layout_alignParentStart="true"
+            android:textAlignment="center"
+            android:textSize="18sp" />
+</RelativeLayout>
