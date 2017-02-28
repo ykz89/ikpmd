@@ -46,7 +46,8 @@
             android:layout_marginTop="55dp"
             android:layout_below="@+id/input_result"
             android:layout_toEndOf="@+id/cancel_action"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:elevation="3dp" />
 
         <Button
             android:text="@string/cancelText"
@@ -57,5 +58,6 @@
             android:layout_alignTop="@+id/add_result_button"
             android:layout_alignParentStart="true"
             android:textAlignment="center"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:elevation="3dp" />
 </RelativeLayout>
