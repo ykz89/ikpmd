@@ -67,8 +67,6 @@ public class ListCoursesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_list_results, container, false);
-        Snackbar.make(view, "Cursussen opgehaald", Snackbar.LENGTH_SHORT)
-                .show();
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_courses);
         // use this setting to improve performance if you know that changes
@@ -131,8 +129,18 @@ public class ListCoursesFragment extends Fragment {
             dbHelper.insert(DatabaseInfo.CourseTables.COURSE, null, cv);
         }
 
-        Cursor rs = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null, null);
+        populateAdapter();
+        Snackbar.make(view, "Cursussen opgehaald", Snackbar.LENGTH_SHORT)
+                .show();
+    }
 
+    private void processRequestError(VolleyError error){
+        Log.e("ListCoursesFragment", error.toString());
+        populateAdapter();
+    }
+
+    public void populateAdapter(){
+        Cursor rs = dbHelper.query(DatabaseInfo.CourseTables.COURSE, new String[]{"*"}, null, null, null, null, null);
         try {
             while (rs.moveToNext()) {
                 int idIndex = rs.getColumnIndex("id");
@@ -159,9 +167,5 @@ public class ListCoursesFragment extends Fragment {
         mAdapter = new CourseViewAdapter(dataset);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.getAdapter().notifyDataSetChanged();
-    }
-
-    private void processRequestError(VolleyError error){
-        Log.e("ListCoursesFragment", error.toString());
     }
 }

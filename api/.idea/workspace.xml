@@ -15,15 +15,27 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="updateGrade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="updateGrade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/updateGrade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
               <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
               <folding>
-                <marker date="1488248088000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
-                <marker date="1488248088000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
-                <marker date="1488248088000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
+                <marker date="1488284157000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
+                <marker date="1488284157000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
+                <marker date="1488284157000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="showResults.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/showResults.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1488284157000" expanded="true" signature="162:277" ph="SELECT id, n... Course" />
               </folding>
             </state>
           </provider>
@@ -33,10 +45,20 @@
         <entry file="file://$PROJECT_DIR$/showCourses.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="11" lean-forward="true" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+              <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
               <folding>
-                <marker date="1488201040000" expanded="true" signature="162:253" ph="SELECT id, n... Course" />
+                <marker date="1488284157000" expanded="true" signature="162:253" ph="SELECT id, n... Course" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="connection.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/connection.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -46,9 +68,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/connection.php" />
         <option value="$PROJECT_DIR$/showCourses.php" />
         <option value="$PROJECT_DIR$/updateGrade.php" />
+        <option value="$PROJECT_DIR$/connection.php" />
       </list>
     </option>
   </component>
@@ -172,12 +194,12 @@
       <updated>1487256918207</updated>
       <workItem from="1487256919528" duration="842000" />
       <workItem from="1487716020737" duration="269000" />
-      <workItem from="1488202130963" duration="2508000" />
+      <workItem from="1488202130963" duration="3068000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3619000" />
+    <option name="totallyTimeSpent" value="4179000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="776" extended-state="6" />
@@ -218,9 +240,9 @@
         <state relative-caret-position="255">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <marker date="1488248088000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
-            <marker date="1488248088000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
-            <marker date="1488248088000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
+            <marker date="1488284157000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
+            <marker date="1488284157000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
+            <marker date="1488284157000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
           </folding>
         </state>
       </provider>
@@ -230,7 +252,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1488201040000" expanded="true" signature="162:253" ph="SELECT id, n... Course" />
+            <marker date="1488284157000" expanded="true" signature="162:253" ph="SELECT id, n... Course" />
           </folding>
         </state>
       </provider>
@@ -240,9 +262,9 @@
         <state relative-caret-position="255">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <marker date="1488248088000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
-            <marker date="1488248088000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
-            <marker date="1488248088000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
+            <marker date="1488284157000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
+            <marker date="1488284157000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
+            <marker date="1488284157000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
           </folding>
         </state>
       </provider>
@@ -252,26 +274,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1488201040000" expanded="true" signature="162:253" ph="SELECT id, n... Course" />
+            <marker date="1488284157000" expanded="true" signature="162:253" ph="SELECT id, n... Course" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/showCourses.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="11" lean-forward="true" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
-          <folding>
-            <marker date="1488201040000" expanded="true" signature="162:253" ph="SELECT id, n... Course" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/connection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="28" lean-forward="false" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -280,10 +284,38 @@
         <state relative-caret-position="240">
           <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
           <folding>
-            <marker date="1488248088000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
-            <marker date="1488248088000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
-            <marker date="1488248088000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
+            <marker date="1488284157000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
+            <marker date="1488284157000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
+            <marker date="1488284157000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/showResults.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1488284157000" expanded="true" signature="162:277" ph="SELECT id, n... Course" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/showCourses.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <marker date="1488284157000" expanded="true" signature="162:253" ph="SELECT id, n... Course" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/connection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
