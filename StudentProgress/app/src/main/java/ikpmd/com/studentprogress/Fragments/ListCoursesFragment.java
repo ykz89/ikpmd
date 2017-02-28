@@ -67,8 +67,6 @@ public class ListCoursesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_list_results, container, false);
-        Snackbar.make(view, "Cursussen opgehaald", Snackbar.LENGTH_SHORT)
-                .show();
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_courses);
         // use this setting to improve performance if you know that changes
@@ -132,6 +130,8 @@ public class ListCoursesFragment extends Fragment {
         }
 
         populateAdapter();
+        Snackbar.make(view, "Cursussen opgehaald", Snackbar.LENGTH_SHORT)
+                .show();
     }
 
     private void processRequestError(VolleyError error){

@@ -105,7 +105,6 @@ public class PieChartFragment extends Fragment {
         PieData data = new PieData(xValues, dataSet);
         mChart.setData(data); // bind dataset aan chart.
         mChart.invalidate();  // Aanroepen van een redraw
-        Log.d("aantal =", ""+currentEcts);
     }
 
 

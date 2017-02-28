@@ -182,6 +182,16 @@ public class MainResultFragment extends Fragment implements Updateable{
         }finally {
             rs.close();
         }
+        if(dataset.size() == 0){
+            Snackbar.make(view, "Geen resultaten", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            fetchResults();
+                        }
+                    })
+                    .show();
+        }
         mAdapter = new ResultsViewAdapter(dataset, this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.getAdapter().notifyDataSetChanged();    }
