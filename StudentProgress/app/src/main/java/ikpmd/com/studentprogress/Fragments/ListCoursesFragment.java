@@ -21,7 +21,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-import ikpmd.com.studentprogress.Adapters.RecyclerViewAdapter;
+import ikpmd.com.studentprogress.Adapters.CourseViewAdapter;
 import ikpmd.com.studentprogress.Helpers.DatabaseHelper;
 import ikpmd.com.studentprogress.Helpers.DatabaseInfo;
 import ikpmd.com.studentprogress.Helpers.GsonRequest;
@@ -46,7 +46,7 @@ public class ListCoursesFragment extends Fragment {
      * this fragment using the provided parameters.
      * @return A new instance of fragment ListCoursesFragment.
      */
-    public static ListCoursesFragment newInstance(String param1, String param2) {
+    public static ListCoursesFragment newInstance() {
         ListCoursesFragment fragment = new ListCoursesFragment();
         return fragment;
     }
@@ -63,10 +63,10 @@ public class ListCoursesFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_list_results, container, false);
-        Snackbar.make(view, "Resultaten ophalen..", Snackbar.LENGTH_SHORT)
+        Snackbar.make(view, "Cursussen opgehaald", Snackbar.LENGTH_SHORT)
                 .show();
 
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_results);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_courses);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
@@ -75,7 +75,7 @@ public class ListCoursesFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
 
         // specify an adapter
-        mAdapter = new RecyclerViewAdapter(dataset);
+        mAdapter = new CourseViewAdapter(dataset);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.getAdapter().notifyDataSetChanged();
 
@@ -152,7 +152,7 @@ public class ListCoursesFragment extends Fragment {
         }finally {
             rs.close();
         }
-        mAdapter = new RecyclerViewAdapter(dataset);
+        mAdapter = new CourseViewAdapter(dataset);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.getAdapter().notifyDataSetChanged();
     }

@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DatabaseHelper extends SQLiteOpenHelper{
     public static SQLiteDatabase mSQLDB;
@@ -60,6 +63,36 @@ public class DatabaseHelper extends SQLiteOpenHelper{
         return mSQLDB.query(table, columns, selection, selectArgs, groupBy, having, orderBy);
     }
 
+    public Cursor rawQuery(String sql, String[] selectArgs){
+        return mSQLDB.rawQuery(sql, selectArgs);
+    }
 
+    /**
+     * Getting all courses that have no result
+     * */
+    public List<String> getCoursesWithoutResult(){
+        List<String> courses = new ArrayList<String>();
+
+        // Select All Query
+        String selectQuery = "SELECT id, name, ects, term, mandatory, grade " +
+                "FROM Course WHERE grade IS NULL;";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                courses.add(cursor.getString(1));
+            } while (cursor.moveToNext());
+        }
+
+        // closing connection
+        cursor.close();
+        //db.close();
+
+        // returning courses
+        return courses;
+    }
 
 }

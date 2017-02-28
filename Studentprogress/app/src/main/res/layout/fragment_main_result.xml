@@ -11,17 +11,45 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_gravity="bottom">
-        <!--<Button-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--style="@style/Base.Widget.AppCompat.Button.Colored"-->
-            <!--android:id="@+id/addResultButton"-->
-            <!--android:elevation="0dp"-->
-            <!--android:text="@string/addResultButtonText" />-->
+        android:layout_gravity="top">
+
+        <TextView
+            android:id="@+id/course_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Module"
+            android:layout_weight="0.10" />
+
+        <TextView
+            android:id="@+id/course_ects"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.35"
+            android:text="ECTS"
+            />
+        <TextView
+            android:id="@+id/course_term"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Periode"
+            />
+        <TextView
+            android:id="@+id/course_grade"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Resultaat"
+        />
 
     </LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_results"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="30dp" />
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

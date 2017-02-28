@@ -18,7 +18,7 @@ public class MainCoursesFragment extends Fragment implements View.OnClickListene
     public MainCoursesFragment() {
     }
 
-    public static MainCoursesFragment newInstance(String param1, String param2) {
+    public static MainCoursesFragment newInstance() {
         MainCoursesFragment fragment = new MainCoursesFragment();
         return fragment;
     }

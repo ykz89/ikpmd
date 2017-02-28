@@ -15,7 +15,7 @@ public class MainFragment extends Fragment {
     public MainFragment() {
     }
 
-    public static MainFragment newInstance(String param1, String param2) {
+    public static MainFragment newInstance() {
         MainFragment fragment = new MainFragment();
         return fragment;
     }

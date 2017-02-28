@@ -1,9 +1,10 @@
 package ikpmd.com.studentprogress;
 
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,12 +15,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import ikpmd.com.studentprogress.Fragments.AddResultFragment;
+import ikpmd.com.studentprogress.Fragments.ListCoursesFragment;
 import ikpmd.com.studentprogress.Fragments.MainCoursesFragment;
 import ikpmd.com.studentprogress.Fragments.MainFragment;
 import ikpmd.com.studentprogress.Fragments.MainResultFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_results) {
-            fragmentClass = MainCoursesFragment.class;
+            fragmentClass = ListCoursesFragment.class;
         } else if (id == R.id.nav_edit) {
             fragmentClass = MainResultFragment.class;
         } else {
@@ -94,7 +97,16 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onFABClicked(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        // Create new fragment and transaction
+        Fragment newFragment = new AddResultFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+        // Replace whatever is in the fragment_container view with this fragment,
+        // and add the transaction to the back stack if needed
+                transaction.replace(R.id.content_main, newFragment);
+                transaction.addToBackStack(null);
+
+        // Commit the transaction
+        transaction.commit();
     }
 }

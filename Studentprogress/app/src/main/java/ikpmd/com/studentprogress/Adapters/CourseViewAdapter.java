@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import ikpmd.com.studentprogress.Models.CourseModel;
 import ikpmd.com.studentprogress.R;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class CourseViewAdapter extends RecyclerView.Adapter<CourseViewAdapter.ViewHolder> {
     private ArrayList<CourseModel> mDataset;
 
     // Provide a reference to the views for each data item
@@ -32,14 +32,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public RecyclerViewAdapter(ArrayList<CourseModel> myDataset) {
+    public CourseViewAdapter(ArrayList<CourseModel> myDataset) {
         mDataset = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                   int viewType) {
+    public CourseViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                           int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         // Inflate the custom layout
