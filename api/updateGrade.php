@@ -2,18 +2,24 @@
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     require 'connection.php';
-    createUser();
+    updateGrade();
 }
 
-function createUser() {
+function updateGrade()
+{
     global $connect;
 
-    $grade 					= $_POST["grade"];
-    $name 				    = $_POST["name"];
+    if(isset($_SERVER["QUERY_STRING"])) {
+        parse_str($_SERVER["QUERY_STRING"]);
+        $grade = mysqli_real_escape_string($connect, $grade);
+        $name = mysqli_real_escape_string($connect, $name);
 
-    $query = "UPDATE Course SET grade = $grade WHERE name = $name;";
-    mysqli_query($connect,$query) or die(mysqli_error($connect));
-    mysqli_close($connect);
+        $query = "UPDATE Course SET grade = '$grade' WHERE name = '$name';";
+        mysqli_query($connect, $query) or die(mysqli_error($connect));
+        mysqli_close($connect);
+        echo "success";
+    }
 }
+
 
 ?>
