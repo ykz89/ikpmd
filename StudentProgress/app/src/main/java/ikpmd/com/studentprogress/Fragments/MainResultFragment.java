@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -30,8 +31,11 @@ import ikpmd.com.studentprogress.Helpers.VolleyHelper;
 import ikpmd.com.studentprogress.Models.CourseModel;
 import ikpmd.com.studentprogress.R;
 
+interface Updateable {
+    public void update();
+}
 
-public class MainResultFragment extends Fragment {
+public class MainResultFragment extends Fragment implements Updateable{
     private static final String ENDPOINT = "http://10.0.2.2/ikpmd/api/showCourses"; //localhost
     private View view;
     private DatabaseHelper dbHelper;
@@ -39,6 +43,7 @@ public class MainResultFragment extends Fragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<CourseModel> dataset = new ArrayList<CourseModel>();
+
 
     public MainResultFragment() {
     }
@@ -71,7 +76,7 @@ public class MainResultFragment extends Fragment {
         mLayoutManager = new LinearLayoutManager(getContext());
 
         // specify an adapter
-        mAdapter = new ResultsViewAdapter(dataset);
+        mAdapter = new ResultsViewAdapter(dataset, this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.getAdapter().notifyDataSetChanged();
 
@@ -138,7 +143,7 @@ public class MainResultFragment extends Fragment {
         }finally {
             rs.close();
         }
-        mAdapter = new ResultsViewAdapter(dataset);
+        mAdapter = new ResultsViewAdapter(dataset, this);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.getAdapter().notifyDataSetChanged();
     }
@@ -164,5 +169,14 @@ public class MainResultFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    public void update() {
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.content_main, new MainResultFragment());
+        getFragmentManager().popBackStack();
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }

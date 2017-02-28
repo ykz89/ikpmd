@@ -19,11 +19,11 @@
         <entry file="file://$PROJECT_DIR$/updateGrade.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="73" lean-forward="false" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
+              <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
               <folding>
-                <marker date="1488240320000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
-                <marker date="1488240320000" expanded="true" signature="377:425" ph="UPDATE Cours... " />
-                <marker date="1488240320000" expanded="true" signature="377:432" ph="UPDATE Cours... " />
+                <marker date="1488248088000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
+                <marker date="1488248088000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
+                <marker date="1488248088000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
               </folding>
             </state>
           </provider>
@@ -172,12 +172,12 @@
       <updated>1487256918207</updated>
       <workItem from="1487256919528" duration="842000" />
       <workItem from="1487716020737" duration="269000" />
-      <workItem from="1488202130963" duration="2192000" />
+      <workItem from="1488202130963" duration="2508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3303000" />
+    <option name="totallyTimeSpent" value="3619000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1440" height="776" extended-state="6" />
@@ -218,9 +218,9 @@
         <state relative-caret-position="255">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <marker date="1488240320000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
-            <marker date="1488240320000" expanded="true" signature="377:425" ph="UPDATE Cours... " />
-            <marker date="1488240320000" expanded="true" signature="377:432" ph="UPDATE Cours... " />
+            <marker date="1488248088000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
+            <marker date="1488248088000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
+            <marker date="1488248088000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
           </folding>
         </state>
       </provider>
@@ -240,9 +240,9 @@
         <state relative-caret-position="255">
           <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <marker date="1488240320000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
-            <marker date="1488240320000" expanded="true" signature="377:425" ph="UPDATE Cours... " />
-            <marker date="1488240320000" expanded="true" signature="377:432" ph="UPDATE Cours... " />
+            <marker date="1488248088000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
+            <marker date="1488248088000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
+            <marker date="1488248088000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
           </folding>
         </state>
       </provider>
@@ -278,11 +278,11 @@
     <entry file="file://$PROJECT_DIR$/updateGrade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="73" lean-forward="false" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
+          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
           <folding>
-            <marker date="1488240320000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
-            <marker date="1488240320000" expanded="true" signature="377:425" ph="UPDATE Cours... " />
-            <marker date="1488240320000" expanded="true" signature="377:432" ph="UPDATE Cours... " />
+            <marker date="1488248088000" expanded="true" signature="377:402" ph="UPDATE Cours... " />
+            <marker date="1488248088000" expanded="true" signature="377:423" ph="UPDATE Cours... " />
+            <marker date="1488248088000" expanded="true" signature="377:430" ph="UPDATE Cours... " />
           </folding>
         </state>
       </provider>

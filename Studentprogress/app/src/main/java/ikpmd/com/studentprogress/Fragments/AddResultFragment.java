@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -153,7 +154,6 @@ public class AddResultFragment extends Fragment implements AdapterView.OnItemSel
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         course = spinner.getItemAtPosition(position).toString();
-        Log.d("SpinnerItem: ", course);
     }
 
     @Override
@@ -167,10 +167,16 @@ public class AddResultFragment extends Fragment implements AdapterView.OnItemSel
         {
             case R.id.add_result_button:
                 String result = resultTextView.getText().toString();
-                addResult(course, result);
-                Snackbar.make(view, "Cijfer toegevoegd", Snackbar.LENGTH_LONG)
+                if(result.isEmpty())
+                {
+                    Toast.makeText(getContext(), "Vul resultaat in.", Toast.LENGTH_LONG).show();
+                    break;
+                }else{
+                    addResult(course, result);
+                    Snackbar.make(view, "Cijfer toegevoegd", Snackbar.LENGTH_LONG)
                         .show();
-                break;
+                    break;
+                }
             case R.id.cancel_action:
                 getFragmentManager().popBackStack();
                 break;

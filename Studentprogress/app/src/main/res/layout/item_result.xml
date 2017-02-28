@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,30 +12,34 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:paddingTop="7dp"
         />
     <TextView
         android:id="@+id/course_ects"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        android:paddingTop="7dp"
         />
     <TextView
         android:id="@+id/course_term"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        />
+        android:paddingTop="7dp" />
     <TextView
         android:id="@+id/course_grade"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        />
-    <TextView
-        android:id="@+id/course_mandatory"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        />
+        android:paddingTop="7dp" />
+
+    <ImageButton
+        android:src="@drawable/ic_delete_black_24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:id="@+id/deleteButton"
+        style="@android:style/Widget.Holo.Light.Button.Borderless.Small"
+        android:elevation="0dp" />
 
 </LinearLayout>
