@@ -89,10 +89,32 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         // closing connection
         cursor.close();
-        //db.close();
 
         // returning courses
         return courses;
+    }
+
+    /**
+     * Getting current amount of ects
+     * */
+    public int getECTS(){
+       int ects = 0;
+
+        // Select All Query
+        String selectQuery = "SELECT SUM(ects) as ects FROM Course WHERE lower(grade) = \"v\" or grade >= 5.5;";
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        cursor.moveToFirst();
+        ects = cursor.getInt(0);
+
+
+        // closing connection
+        cursor.close();
+
+        // returning courses
+        return ects;
     }
 
 }

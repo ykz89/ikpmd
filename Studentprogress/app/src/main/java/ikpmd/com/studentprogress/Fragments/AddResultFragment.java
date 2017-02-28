@@ -2,6 +2,7 @@ package ikpmd.com.studentprogress.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -41,6 +42,7 @@ public class AddResultFragment extends Fragment implements AdapterView.OnItemSel
     private Button addResultButton, cancelButton;
     private String course = null;
     private TextView resultTextView;
+    private View view;
 
     public AddResultFragment() {
         // Required empty public constructor
@@ -67,7 +69,7 @@ public class AddResultFragment extends Fragment implements AdapterView.OnItemSel
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_add_result, container, false);
+        view = inflater.inflate(R.layout.fragment_add_result, container, false);
         spinner = (Spinner) view.findViewById(R.id.course_spinner);
         addResultButton = (Button) view.findViewById(R.id.add_result_button);
         cancelButton = (Button) view.findViewById(R.id.cancel_action);
@@ -166,6 +168,8 @@ public class AddResultFragment extends Fragment implements AdapterView.OnItemSel
             case R.id.add_result_button:
                 String result = resultTextView.getText().toString();
                 addResult(course, result);
+                Snackbar.make(view, "Cijfer toegevoegd", Snackbar.LENGTH_LONG)
+                        .show();
                 break;
             case R.id.cancel_action:
                 getFragmentManager().popBackStack();

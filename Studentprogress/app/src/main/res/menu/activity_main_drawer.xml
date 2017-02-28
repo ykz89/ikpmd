@@ -10,5 +10,9 @@
             android:id="@+id/nav_edit"
             android:icon="@drawable/ic_menu_edit"
             android:title="Resultaten" />
+        <item
+            android:id="@+id/nav_piechart"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="Voortgang" />
     </group>
 </menu>

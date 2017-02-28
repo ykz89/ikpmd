@@ -20,6 +20,7 @@ import ikpmd.com.studentprogress.Fragments.ListCoursesFragment;
 import ikpmd.com.studentprogress.Fragments.MainCoursesFragment;
 import ikpmd.com.studentprogress.Fragments.MainFragment;
 import ikpmd.com.studentprogress.Fragments.MainResultFragment;
+import ikpmd.com.studentprogress.Fragments.PieChartFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = ListCoursesFragment.class;
         } else if (id == R.id.nav_edit) {
             fragmentClass = MainResultFragment.class;
+        }else if (id == R.id.nav_piechart) {
+            fragmentClass = PieChartFragment.class;
         } else {
             fragmentClass = MainFragment.class;
         }
