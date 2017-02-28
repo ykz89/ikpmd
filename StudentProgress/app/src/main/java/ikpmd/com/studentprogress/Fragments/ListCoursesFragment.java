@@ -54,6 +54,10 @@ public class ListCoursesFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            getActivity().setTitle(bundle.getString("title", null));
+        }
         dbHelper = DatabaseHelper.getHelper(this.getContext());
         fetchCourses();
     }

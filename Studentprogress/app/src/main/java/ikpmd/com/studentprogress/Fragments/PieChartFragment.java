@@ -34,7 +34,6 @@ public class PieChartFragment extends Fragment {
     private DatabaseHelper dbHelper;
 
     public PieChartFragment() {
-        // Required empty public constructor
     }
 
     /**
@@ -43,8 +42,7 @@ public class PieChartFragment extends Fragment {
      *
      * @return A new instance of fragment PieChartFragment.
      */
-    // TODO: Rename and change types and number of parameters
-    public static PieChartFragment newInstance(String param1, String param2) {
+    public static PieChartFragment newInstance() {
         PieChartFragment fragment = new PieChartFragment();
         return fragment;
     }
@@ -52,6 +50,10 @@ public class PieChartFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            getActivity().setTitle(bundle.getString("title", null));
+        }
         dbHelper = DatabaseHelper.getHelper(this.getContext());
     }
 

@@ -46,7 +46,6 @@ public class AddResultFragment extends Fragment implements AdapterView.OnItemSel
     private View view;
 
     public AddResultFragment() {
-        // Required empty public constructor
     }
 
     /**

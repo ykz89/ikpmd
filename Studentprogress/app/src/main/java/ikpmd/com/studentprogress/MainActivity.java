@@ -1,10 +1,11 @@
 package ikpmd.com.studentprogress;
 
-import android.net.Uri;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,7 +18,6 @@ import android.view.View;
 
 import ikpmd.com.studentprogress.Fragments.AddResultFragment;
 import ikpmd.com.studentprogress.Fragments.ListCoursesFragment;
-import ikpmd.com.studentprogress.Fragments.MainCoursesFragment;
 import ikpmd.com.studentprogress.Fragments.MainFragment;
 import ikpmd.com.studentprogress.Fragments.MainResultFragment;
 import ikpmd.com.studentprogress.Fragments.PieChartFragment;
@@ -61,7 +61,16 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            new AlertDialog.Builder(this)
+                    .setMessage("Weet je zeker dat je wilt stoppen?")
+                    .setCancelable(false)
+                    .setPositiveButton("Ja", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            MainActivity.this.finish();
+                        }
+                    })
+                    .setNegativeButton("Nee", null)
+                    .show();
         }
     }
 
@@ -71,19 +80,26 @@ public class MainActivity extends AppCompatActivity
         Class fragmentClass;
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        String title = null;
 
         if (id == R.id.nav_results) {
             fragmentClass = ListCoursesFragment.class;
+            title = "Cursussen";
         } else if (id == R.id.nav_edit) {
             fragmentClass = MainResultFragment.class;
+            title = "Resultaten";
         }else if (id == R.id.nav_piechart) {
             fragmentClass = PieChartFragment.class;
+            title = "Voortgang";
         } else {
             fragmentClass = MainFragment.class;
         }
 
         try {
             fragment = (Fragment) fragmentClass.newInstance();
+            Bundle bundle = new Bundle();
+            bundle.putString("title", title);
+            fragment.setArguments(bundle);
         } catch (Exception e) {
             e.printStackTrace();
         }
